@@ -56,7 +56,7 @@ pip freeze > requipments.txt
 pip install -r requipments.txt
 export APP_SETTINGS="config.DevelopmentConfig"
 # DBUSERNAME, DBPASSWORD и DBNAME необходимо заменить на свои реквизиты доступа к БД
-export DATABASE_URL='postgresql://DBUSERNAME:DBPASSWORD@localhost/DBNAME'
+export DATABASE_URL='postgresql://atretyak:welcome123@localhost/rpm_db'
 python manage.py db init
 python manage.py db migrate
 python manage.py db upgrade
