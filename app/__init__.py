@@ -42,7 +42,7 @@ def configureApp():
     config = configparser.ConfigParser()
     config.read('config.ini')
 
-    app.config['APP_SETTINGS'] = config['DEFAULT']['APP_SETTINGS']
+    app.config['APP_SETTINGS'] = os.environ['APP_SETTINGS']
 
     #app.config['SQLALCHEMY_DATABASE_URI'] = config['DEFAULT']['SQLALCHEMY_DATABASE_URI']
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
