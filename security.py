@@ -1,4 +1,4 @@
-from models.user import UserModel
+from app.models.user import UserModel
 from flask_bcrypt import Bcrypt
 
 def authenticate(email, password):
