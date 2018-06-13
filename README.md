@@ -44,3 +44,21 @@ http://openadmin.neuethemes.net/client/html/
 ![OpenAdmin Dashboard](https://neuethemes.net/wp-content/uploads/01-openadmin-screen-01.jpg "OpenAdmin Dashboard")
 
 ![divider](https://neuethemes.net/wp-content/uploads/transparent-30.png "divider")
+
+## Setup
+
+```
+git clone https://github.com/bosha/flask-app-structure-example/
+cd flask-app-structure-example
+virtualenv -p python3 env
+source env/bin/activate
+pip freeze > requipments.txt
+pip install -r requipments.txt
+export APP_SETTINGS="config.DevelopmentConfig"
+# DBUSERNAME, DBPASSWORD и DBNAME необходимо заменить на свои реквизиты доступа к БД
+export DATABASE_URL='postgresql://DBUSERNAME:DBPASSWORD@localhost/DBNAME'
+python manage.py db init
+python manage.py db migrate
+python manage.py db upgrade
+python manage.py runserver
+```
