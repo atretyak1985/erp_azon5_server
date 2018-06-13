@@ -32,9 +32,12 @@ jwt = JWT(app, authenticate, identity_function)
 @jwt.auth_response_handler
 def customized_response_handler(access_token, identity):
     return jsonify({
-        'access_token': access_token.decode('utf-8'),
-        'user_id': identity.id,
-        'user_email': identity.email
+        'data':
+            {
+                'token': access_token.decode('utf-8'),
+                '_id': identity.id,
+                'email': identity.email
+            }
     })
 
 api.add_resource(Stats, '/stats/<string:type>')
