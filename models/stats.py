@@ -5,7 +5,8 @@ class StatsModel(db.Model):
 
     _id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(255))
-    data = db.Column(db.JSON(9000))
+    data = db.Column(db.String(9000))
+    #data = db.Column(db.JSON(9000))
 
     def __init__(self, type, data):
         self.type = type
