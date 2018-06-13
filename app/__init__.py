@@ -1,3 +1,4 @@
+import os
 import datetime, configparser
 
 from flask import Flask, jsonify
@@ -43,7 +44,8 @@ def configureApp():
 
     app.config['APP_SETTINGS'] = config['DEFAULT']['APP_SETTINGS']
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = config['DEFAULT']['SQLALCHEMY_DATABASE_URI']
+    #app.config['SQLALCHEMY_DATABASE_URI'] = config['DEFAULT']['SQLALCHEMY_DATABASE_URI']
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = config['DEFAULT'].getboolean('SQLALCHEMY_TRACK_MODIFICATIONS')
 
     app.config['JWT_AUTH_URL_RULE'] = config['DEFAULT']['JWT_AUTH_URL_RULE']
