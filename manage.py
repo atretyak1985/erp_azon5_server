@@ -10,7 +10,7 @@ config.read('config.ini')
 app = create_app()
 
 manager = Manager(app)
-migrate = Migrate(app, db)
+migrate = Migrate(app, db, 'migrations')
 manager.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
