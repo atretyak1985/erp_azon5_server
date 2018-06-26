@@ -48,12 +48,12 @@ http://openadmin.neuethemes.net/client/html/
 ## Setup
 
 ```
-git clone https://github.com/bosha/flask-app-structure-example/
+git clone https://git.heroku.com/azon5-server.git
 cd flask-app-structure-example
 virtualenv -p python3 env
 source env/bin/activate
-pip freeze > requipments.txt
-pip install -r requipments.txt
+pip freeze > requirements.txt
+pip install -r requirements.txt
 export APP_SETTINGS="config.DevelopmentConfig"
 # DBUSERNAME, DBPASSWORD и DBNAME необходимо заменить на свои реквизиты доступа к БД
 export DATABASE_URL='postgresql://atretyak:welcome123@localhost/rpm_db'

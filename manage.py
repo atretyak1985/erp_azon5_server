@@ -13,6 +13,9 @@ manager = Manager(app)
 migrate = Migrate(app, db, 'migrations')
 manager.add_command('db', MigrateCommand)
 
+import logging
+logging.basicConfig()
+
 if __name__ == '__main__':
     manager.run()
     #app.run(port=config.getint('DEFAULT', 'APP_PORT'), debug=config['DEFAULT'].getboolean('APP_DEBUG'))
