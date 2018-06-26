@@ -78,7 +78,7 @@ class ConfigApp:
 
     def configureJwt(self):
         CORS(self.app)
-        api = Api(self.app)
+        self.api = Api(self.app)
         jwt = JWT(self.app, authenticate, identity_function)
 
         @jwt.auth_response_handler
