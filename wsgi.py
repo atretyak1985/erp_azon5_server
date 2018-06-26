@@ -3,7 +3,7 @@ import sys
 sys.path.insert(0, '/var/www/erp_azon5_server')
 
 
-from erp_azon5_server import app as application
+from app import app as application
 
 application.secret_key = 'New secret key. Change it on server'
 
