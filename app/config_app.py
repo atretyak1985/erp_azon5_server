@@ -25,7 +25,7 @@ class ConfigApp:
         self.initDataBase()
         self.configLog()
 
-        if app.debug == True:
+        if self.app.debug == True:
             try:
                 from flask_debugtoolbar import DebugToolbarExtension
                 toolbar = DebugToolbarExtension(self.app)
