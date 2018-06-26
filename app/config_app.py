@@ -16,6 +16,7 @@ from security import authenticate, identity as identity_function
 
 
 class ConfigApp:
+    app = Flask(__name__)
 
     def create_app(self):
         self.app = self.configureApp()
@@ -40,7 +41,7 @@ class ConfigApp:
             db.create_all()
 
     def configureApp(self):
-        self.app = Flask(__name__)
+
         config = configparser.ConfigParser()
         config.read('config.ini')
 
