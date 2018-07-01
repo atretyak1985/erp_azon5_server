@@ -15,6 +15,11 @@ manager.add_command('db', MigrateCommand)
 import logging
 logging.basicConfig()
 
+@application.route("/")
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
+
+
 if __name__ == '__main__':
     #manager.run()
     #application.run()
