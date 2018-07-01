@@ -18,7 +18,7 @@ from security import authenticate, identity as identity_function
 class ConfigApp:
 
     def create_app(self):
-        self.app = self.configureApp()
+        self.configureApp()
         self.configureJwt()
 
         self.configureResource()
@@ -42,17 +42,16 @@ class ConfigApp:
     def configureApp(self):
         self.app = Flask(__name__)
         config = configparser.ConfigParser()
-        config.read('config.ini')
+        config.read('app/config.ini')
 
         self.app.config['APP_SETTINGS'] = config['DEFAULT']['APP_SETTINGS']
-
-        self.app.config['SQLALCHEMY_DATABASE_URI'] = config['DEFAULT']['SQLALCHEMY_DATABASE_URI']
-        #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
         self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = config['DEFAULT']['SQLALCHEMY_TRACK_MODIFICATIONS']
 
         self.app.config['JWT_AUTH_URL_RULE'] = config['DEFAULT']['JWT_AUTH_URL_RULE']
         self.app.config['JWT_AUTH_USERNAME_KEY'] = config['DEFAULT']['JWT_AUTH_USERNAME_KEY']
         self.app.config['JWT_EXPIRATION_DELTA'] = datetime.timedelta(days=config.getint('DEFAULT', 'JWT_EXPIRATION_DELTA'))
+
+        self.app.config['SQLALCHEMY_DATABASE_URI'] = config['DEFAULT']['SQLALCHEMY_DATABASE_URI']
 
         self.app.secret_key = config['DEFAULT']['SECRET_KEY']
 
