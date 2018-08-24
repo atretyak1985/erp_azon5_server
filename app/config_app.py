@@ -13,6 +13,7 @@ from app.resources.messages import Message, MessageList
 from app.resources.stats import Stats
 
 from security import authenticate, identity as identity_function
+from datetime import datetime, timedelta
 
 
 class ConfigApp:
@@ -45,15 +46,17 @@ class ConfigApp:
         config.read('app/config.ini')
 
         self.app.config['APP_SETTINGS'] = config['DEFAULT']['APP_SETTINGS']
-        self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = config['DEFAULT']['SQLALCHEMY_TRACK_MODIFICATIONS']
-
-        self.app.config['JWT_AUTH_URL_RULE'] = config['DEFAULT']['JWT_AUTH_URL_RULE']
-        self.app.config['JWT_AUTH_USERNAME_KEY'] = config['DEFAULT']['JWT_AUTH_USERNAME_KEY']
-        self.app.config['JWT_EXPIRATION_DELTA'] = datetime.timedelta(days=config.getint('DEFAULT', 'JWT_EXPIRATION_DELTA'))
-
         self.app.config['SQLALCHEMY_DATABASE_URI'] = config['DEFAULT']['SQLALCHEMY_DATABASE_URI']
 
-        self.app.secret_key = config['DEFAULT']['SECRET_KEY']
+
+        self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+        self.app.config['JWT_AUTH_URL_RULE'] = '/user/authenticate'
+        self.app.config['JWT_AUTH_USERNAME_KEY'] = 'email'
+        self.app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=300)
+
+
+        self.app.secret_key = 'Sm9obiBTY2hyb20ga2lja3MgYXNz'
 
     def configLog(self):
         # if not app.debug and os.environ.get('HEROKU') is None:
